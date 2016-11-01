@@ -10,7 +10,7 @@ def computerRand(board):
     sleep(2)
     return randint(0,7)
 
-# Function to see if player entere
+# Function to see if player entered a number between 1 and 8
 def uIn(player):
     while True:
         try:
@@ -47,6 +47,7 @@ def winner(board):
         for col in range(5):
             if (board[row][col] == board[row - 1][col + 1] == board[row - 2][col + 2] == board[row - 3][col + 3]) and (board[row][col] != " "):
                 return board[row][col]
+            
     # Check if board is full
     nv = 0
     for r in range(8):
@@ -57,11 +58,10 @@ def winner(board):
         playAgain("TIE")
 
 def printBoard(board):
-    print("  1 2 3 4 5 6 7 8")
-    for i in range(8):
-        print(i+1, end='|')
-        for c in range(8):
-            print(board[i][c], end='|')
+    #print("1 2 3 4 5 6 7 8")
+    for i in range(rows):
+        for c in range(cols):
+            print(board[i][c], end=' |')
         print()
 
 def cVpEasy():
@@ -216,10 +216,8 @@ def pvp():
         if winner(grid) == "X" or winner(grid) == "O":
             if winner(grid) == "X":
                 playAgain("THE WINNER IS PLAYER 1")
-                break
             else:
                 playAgain("THE WINNER IS PLAYER 2")
-                break
     
 def playAgain(winner):
     print(winner)
@@ -231,8 +229,12 @@ def playAgain(winner):
         sys.exit(0)
 
 def start():
-    global grid
-    grid = [[" "]*8 for i in range(9)] # Initialise grid using list comprehension
+    global grid, rows, cols
+    rows = int(input("How many rows would you like? "))
+    cols = int(input("How many cols would you like? "))
+    grid = [[" "]*rows for i in range(cols)] # Initialise grid using list comprehension
+    grid.
+    printBoard(grid)
     game = int(input("Would you like to\n1. Player Vs Player\n2. Computer vs Player (EASY)\n3. Computer vs Player (HARD)\n4. Computer vs Player (NIGHTMARE)Please enter the number that corresponds with the option. (Player 1 = X, Player 2 = O)"))
     if game == 1:
         pvp()
