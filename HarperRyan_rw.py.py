@@ -1,6 +1,8 @@
 '''Resident Weevil
 Simple FPS without using functions'''
 
+# DEADLINE = 1st March
+
 import random,time
 
 guns = []   # empty list
